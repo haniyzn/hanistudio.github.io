@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Hani — To Be Loved</title>
+<style>
+body{
+  background:black;
+  color:white;
+  font-family:Arial, sans-serif;
+  text-align:center;
+  padding-top:50px;
+}
+h1{ font-size:50px; margin-bottom:5px; }
+h2{ font-size:30px; margin-top:0; }
+#album-cover{
+  width:300px; 
+  height:auto; 
+  margin:20px auto;
+  border:3px solid white;
+}
+#countdown{
+  font-size:28px; 
+  margin-top:20px; 
+  font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+<h1>Hani</h1>
+<h2>To Be Loved</h2>
+
+<!-- صورة الألبوم -->
+<img id="album-cover" src="tobelovedcoveralbum.png" alt="Album Cover">
+
+<!-- العد التنازلي -->
+<div id="countdown"></div>
+
+<script>
+// ضبط تاريخ الإصدار: 22 أبريل 2026 الساعة 9 صباحاً
+const releaseDate = new Date("April 22, 2026 09:00:00").getTime();
+
+setInterval(function() {
+  const now = new Date().getTime();
+  const distance = releaseDate - now;
+
+  const days = Math.floor(distance / (1000*60*60*24));
+  const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+  const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+
+  document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m";
+
+  if(distance < 0){
+    document.getElementById("countdown").innerHTML = "OUT NOW!";
+  }
+}, 1000);
+</script>
+
+</body>
+</html>
